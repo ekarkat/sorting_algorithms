@@ -52,25 +52,23 @@ void insertion_sort_list(listint_t **list)
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-
 	current = *list;
+	if(current->next == NULL)
+		return;
 	next = current->next;
+
 	while (current != NULL)
 	{
 		if (current->next == NULL)
 			break;
-
 		if (current->next != NULL)
 			next = current->next;
-
 		if (current->n > next->n)
 		{
 			switchi(current, next, list);
 			print_list(*list);
-
 			rec = next;
 			prev = next->prev;
-
 			while ((rec->n < prev->n))
 			{
 				switchi(prev, rec, list);
@@ -79,10 +77,8 @@ void insertion_sort_list(listint_t **list)
 					break;
 				prev = rec->prev;
 			}
-
 			continue;
 		}
 		current = current->next;
-
 	}
 }
